@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="NonoStyleSheet.css">
+<style>
+	#backToHome{
+		display: none;
+	}
+</style>
+<script>
+	jsonPlayerData = {
+		"userName" : "",
+		"password" : "",
+		"firstName" : "",
+		"lastName" : "",
+		"age" : 0,
+		"gender" : "",
+		"location" : ""
+	}
+	
+	function checkUserInput(str) {
+		var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/); //unacceptable chars
+		if (pattern.test(str)) {
+			return false;
+		}
+		return true; //good user input
+	}
+	
+	function isGoodPassWord(str){
+		var pattern = new RegExp(/[A-Z]|[0-9]/g);
+		if(pattern.test(str)){
+			return true;
+		}
+		return false;
+	}
+	
+	function send(){
+		jsonPlayerData.userName = document.getElementById("userName").value;
+		jsonPlayerData.password = document.getElementById("password").value;
+		jsonPlayerData.firstName = document.getElementById("firstName").value;
+		jsonPlayerData.lastName = document.getElementById("lastName").value;
+		jsonPlayerData.age = document.getElementById("age").value;
+		jsonPlayerData.gender = document.getElementById("gender").value;
+		jsonPlayerData.location = document.getElementById("city").value + ", " + document.getElementById("state").value;
+		
+		var myJSON = JSON.stringify(jsonPlayerData);
+		makeRequest('createPlayer.php', myJSON);
+	}
+	
+	function formChecker(){
+		var allFilled = true;
+		var validInput = true;
+		var validAge = true;
+		var goodPassWord = true;
+	
+		//check for user inputs to be present
+		if(document.getElementById("userName").value == "") { allFilled = false; }
+		if(document.getElementById("firstName").value == "") { allFilled = false; }
+		if(document.getElementById("lastName").value == "") { allFilled = false; }
+		if(document.getElementById("age").value == "") { allFilled = false; }
+		if(document.getElementById("gender").value == "") { allFilled = false; }
+		if(document.getElementById("city").value == "") { allFilled = false; }
+		if(document.getElementById("state").value == "") { allFilled = false; }
+		if(document.getElementById("password").value == "") { allFilled = false; }
+		if(document.getElementById("password1").value == "") { allFilled = false; }
+		if(document.getElementById("password").value != document.getElementById("password1").value) { 
+			allFilled = false; 
+			alert("please check passwords");
+			return;
+		}
+		//check to see if user inputs are valid
+		if(!checkUserInput(document.getElementById("userName").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("firstName").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("lastName").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("age").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("gender").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("city").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("state").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("password").value)){ validInput = false;}
+		if(!checkUserInput(document.getElementById("password1").value)){ validInput = false;}
+		
+		if(isNaN(document.getElementById("age").value)){ validAge = false;} 
+		
+		if(!isGoodPassWord(document.getElementById("password").value)){ goodPassWord = false; }
+		
+		if(!allFilled){
+			alert("You must finish all fields");
+			return;
+		}
+		else if(!validInput){
+			alert("Please only use standard alphanumerics");
+			return;
+		}
+		else if(!validAge){
+			alert("age is only a number");
+			return;
+		}
+		else if(!goodPassWord){
+			alert("password must contain 1 upper case letter and 1 digit");
+			return;
+		}
+		else{
+			send();
+			//window.location.replace("Nonogram.html");
+			}
+	}
+	
+	function makeRequest(url,str) {
+		httpRequest = new XMLHttpRequest(); 
+		if (!httpRequest) { 
+		  alert('Cannot create an XMLHTTP instance');
+		  return false;
+		}
+		httpRequest.onreadystatechange = alertContents;  
+		httpRequest.open('POST',url);  
+		httpRequest.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		httpRequest.send('myarray='+ str); 
+	}
+  
+	function alertContents() {
+	  try {
+		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		  if (httpRequest.status === 200) {
+				let response = JSON.parse(httpRequest.responseText);
+				if(response.reason == "successfully created account"){
+					alert(response.reason);
+					let button = document.getElementById("backToHome");
+					button.style.display='block';
+					let button1 = document.getElementById("createUser");
+					button1.style.display='none';
+				}else{
+					alert(response.reason);
+				}
+		  } else {
+			alert('There was a problem with the request.');
+		  }
+		}
+	  }
+	  catch( e ) { 
+		alert('...Caught Exception: ' + e.description);
+	  }
+	}
+	
+</script>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul class="menuBar">
+				<li class="menuBar"><a class="menuBar" href="Nonogram1.php">Home</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramAbout.html">About</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramPlay.html">Play</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramAuthor.html">Author</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="viewBox">
+	<div class="viewBoxLeft"></div>
+	<div class="viewBoxCenter">
+	<ul class="userInfo">
+		<li><span>User Name:  </span><input type="text" id="userName" class="listUserInfo" value="" required="required"></li>
+		<li><span>Password:  </span><input type="password" id="password" class="listUserInfo" value="" required="required"></li>
+		<li><span>Repeat Password:  </span><input type="password" id="password1" class="listUserInfo" value="" required="required"></li>
+		<li><span>First Name: </span><input type="text" id="firstName" class="listUserInfo" value="" required="required"></li>
+		<li><span>Last Name:  </span><input type="text" id="lastName" class="listUserInfo" value="" required="required"></li>
+		<li><span>Age:        </span><input type="text" id="age" class="listUserInfo" value="" required="required"></li>
+		<li><span>Gender:     </span><input type="text" id="gender" class="listUserInfo" value="" required="required"></li>
+		<li><span>City:       </span><input type="text" id="city" class="listUserInfo" value="" required="required"></li>
+		<li><span>State:      </span><input type="text" id="state" class="listUserInfo" value="" required="required"></li>
+	</ul>
+	<p><span><input type="button" id="createUser" value="create" onclick="formChecker()" /></span></p>
+	<p><span><input type="button" id="backToHome" value="return to main page" onclick="location.href = 'Nonogram.html'" /></span></p>
+	</div>
+	<div class="viewBoxRight"></div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+		body{
+			background-color: grey;
+		}
+		
+		.viewBox{
+			width: 100vw;
+			height:100vh;
+			background-color: grey;
+			margin-top: 5%;
+		}
+		
+		.viewBoxLeft{
+			width: 10vw;
+			height: 100vh;
+			float: left;
+			background-color: lime;
+		}
+		
+		.viewBoxRight{
+			width: 10vw;
+			height: 100vh;
+			background-color: lime;
+			float: right;
+		}
+		
+		.viewBoxCenter{
+			width: 60vw;
+			height: 750px;
+			display: inline-block;
+			position: relative;
+			margin-left: 15%;
+		}
+		
+		.myPic{
+			margin-left: 125px;
+		}
+		
+		.myCV{
+			text-align: center;
+			margin-right: 20%;
+		}
+		
+		#hintButton{
+			margin-top: 10px;
+		}
+
+		table#nonoGramTable7 {
+			position: center;
+			background-color: white;
+		}
+		
+		div#score {
+			height: 5vh;
+			width: 8vw;
+			background-color: black;
+			color: lime;
+			text-align: center;
+			margin-left: 1vw;
+			margin-top: 1vh;
+			margin-bottom: 1vh;
+		}
+		
+		div#time {
+			height: 5vh;
+			width: 8vw;
+			background-color: black;
+			color: lime;
+			text-align: center;
+			margin-left: 1vw;
+			margin-top: 1vh;
+			margin-bottom: 1vh;
+		}
+		
+		div#correctSquares {
+			height: 5vh;
+			width: 8vw;
+			background-color: black;
+			color: lime;
+			text-align: center;
+			margin-left: 1vw;
+			margin-top: 1vh;
+			margin-bottom: 1vh;
+		}
+		
+		div#numberOfClicks {
+			height: 5vh;
+			width: 8vw;
+			background-color: black;
+			color: lime;
+			text-align: center;
+			margin-left: 1vw;
+			margin-top: 1vh;
+			margin-bottom: 1vh;
+		}
+		
+		ul.menuBar {
+			list-style-type: none;
+			margin: 5px;
+			padding: 0;
+			overflow: hidden;
+			position: absolute;
+			background-color: black;
+			width: 100%;
+			top: 0;
+		}
+
+		li.menuBar {
+			float: left;
+		}
+
+		li.menuBar a.menuBar{
+			display: block;
+			color: white;
+			text-align: center;
+			font-size: 12pt;
+			padding: 15px;
+			background-color: black;
+			color: white;
+		}
+
+		li.menuBar a.menuBar:hover{
+			background-color: lime;
+			color: black;
+		}
+		
+		.slider{
+			width: 90%;
+			position: center;
+			background-color: black;
+			margin-left: 8px;
+			opacity: .8;
+		}
+		
+		.slider:hover{
+			opacity: 1;
+		}
+		
+		.setTextLeftMarginRightSide{
+			margin-left: 8px;
+		}
+		
+		#sliderBGRed{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(125,0,0), rgba(255,0,0));
+		}
+		
+		#sliderBGGreen{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(0,125,0), rgba(0,155,0));
+		}
+		
+		#create3{
+			display: none;
+		}
+		
+		#sliderBGBlue{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(0,0,125), rgba(0,0,255));
+		}
+		
+		#sliderSQRed{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(0,0,0), rgba(100,0,0));
+		}
+		
+		#sliderSQGreen{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(0,0,0), rgba(0,100,0));
+		}
+		
+		#sliderSQBlue{
+			height: 5vh;
+			width: 90%;
+			padding-right: 2px;
+			background-image: linear-gradient(to right, rgb(0,0,0), rgba(0,0,100));
+		}
+		
+		.userInfo li{
+			padding: 10px;
+		}
+		
+		.userInfo span{
+			background-color: black;
+			color: lime;
+			padding-right: 5px;
+		}
+		
+		.listUserInfo{
+			background-color: black;
+			color: lime;
+		}

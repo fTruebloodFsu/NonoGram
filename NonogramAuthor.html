@@ -1,0 +1,74 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+	<meta charset="utf-8">
+	<title>A nonogram game Csci 130</title>
+	<script type="text/javascript" src="Nonogram2.js"></script>
+	<link rel="stylesheet" type="text/css" href="NonoStyleSheet.css">
+</head>
+
+<body>
+
+	<header>
+		<nav>
+			<ul class="menuBar">
+				<li class="menuBar"><a class="menuBar" href="Nonogram1.php">Home</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramAbout.php">About</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramPlay.php">Play</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonoLeaderBoard.php">Leader Board</a></li>
+				<li class="menuBar"><a class="menuBar" href="NonogramAuthor.html">Author</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<section class="viewBox">
+		<div class="viewBoxLeft">
+			<div class="UNBox"><?php echo ((isset($_SESSION['username'])) ? $_SESSION['username'] : ''); ?></div>
+		</div>
+		
+		<div class="viewBoxCenter">
+			<div class="myPic"><img src="thumbnail.jpg" width="400" height="200" alt="myPic" /></div>
+			<section class="myCV">
+				<h1>Fletcher Trueblood</h1>
+				<h4>1812 East Cambridge Ct. Visalia, California 93291 · (559)730-6611</h4>
+				<h4>Ftrueblood@att.net</h4>
+				<h4>---------------------------------------------------------------------------------------------------------------------------</h4>
+				<h4>Ambitious, determined, and detail-oriented individual with strong object-oriented development skills, experience in Java and C++, seeks challenging junior Java Developer position with a company who can benefit from leadership experience and excellent communication skills.</h4>
+				<h2>EXPERIENCE</h2>
+				<h3>JUNE 2006 – DECEMBER 2008</h3>
+				<h3>GENERAL MANAGER, LITTLE CAESARS PIZZA</h3>
+				<h4>•	Developed weekly schedule based on sales volume</h4>
+				<h4>•	Generated weekly food orders for projected sales volume</h4>
+				<h4>•	Analyzed nightly and weekly inventory audits to control food cost</h4>
+				<h4>•	Implemented bi-weekly open interviews</h4>
+				<h4>•	Ranked 6th in sales volume worldwide for 2007</h4>
+				<h3>JANUARY 2009 – PRESENT</h3>
+				<h3>DISTRICT MANAGER, LITTLE CAESARS PIZZA</h3>
+				<h4>•	Implemented a projection system to better predict weekly sales</h4>
+				<h4>•	Trained all new general managers</h4>
+				<h4>•	Set weekly goals for general managers</h4>
+				<h4>•	Analyzed all weekly schedules, food orders, and weekly inventories for each general manager</h4>
+				<h2>EDUCATION</h2>
+				<h3>JUNE 2015</h3>
+				<h3>ASSOCIATE OF SCIENCE, COLLEGE OF THE SEQUOIAS</h3>
+				<h4>•	Major: Computer Science</h4>
+				<h4•	GPA: 3.40</h4>
+				<h3>EXPECTED DECEMBER 2019</h3>
+				<h3>BACHELOR OF SCIENCE, FRESNO STATE UNIVERSITY</h3>
+				<h4>•	Major: Computer Science</h4>
+				<h4>•	GPA: 3.33</h4>
+				<h2>SKILLS</h2>
+				<h4>•	Experience in: Java, C++, Haskell, HTML, CSS, JavaScript, AJAX, PHP, Python, and mySQL.</h4>
+			</section>
+		</div>
+		
+		<div class="viewBoxRight">
+		
+		</div>
+	</section>
+</body>
+
+
+</html>
